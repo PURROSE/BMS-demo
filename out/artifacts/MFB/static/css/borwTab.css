@@ -1,0 +1,39 @@
+.box_big{
+    width: 80%;
+    height: 100%;
+    margin: 0 auto;
+}
+.tab_font{
+    border-left: #46b8da 1px solid;
+    width: 100%;
+    margin-left: 1%;
+    margin-top: 1%;
+}
+.th_tab{
+    margin-left: 1%;
+    border-left: #46b8da 2px solid;
+    border-bottom: #46b8da 2px solid;
+    font-size: 1.5em;
+}
+.tab_borwTab td{
+    margin-left: 2%;
+}
+.tab_borwTab tfoot{
+    border-top: #5bc0de 1px solid;
+    text-align: center;
+}
+.box_tab{
+    border: #46b8da 1px solid;
+}
+.tab_borwTab{
+    border: #2e6da4 2px dashed;
+    margin: 0 auto;
+}
+input{
+    margin: 5px;
+}
+.sele_client{
+    margin: 0 auto;
+    border: #46b8da 1px solid;
+    width: 100%;
+}

@@ -1,0 +1,330 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>图书管理系统</title>
+
+    <link rel="stylesheet" type="text/css" href="static/css/static/bootstrap.min.css">
+    <link rel="stylesheet" href="static/css/admin.css">
+
+    <script type="text/javascript" src="static/js/jq/jquery-3.4.1.min.js"></script>
+    <script src="static/js/bootstrap/bootstrap.min.js"></script>
+    <script src="static/js/admin.js"></script>
+    <script type="text/javascript" src="static/js/static.js"></script>
+</head>
+<body>
+    <div class="big_box">
+        <div class="nav_box">
+            <nav class="navbar navbar-default" role="navigation">
+                <div class="container-fluid">
+                    <div class="navbar-header">
+                        <a class="navbar-brand" href="index.html">图书管理系统</a>
+                    </div>
+                    <div>
+                        <ul class="nav navbar-nav">
+                            <li><a href="BorwTab.html">借阅管理</a></li>
+                            <li><a href="admin.html">系统管理</a></li>
+                        </ul>
+                    </div>
+                    <div class="user_box" style="float: right">
+                        <ul class="nav navbar-nav">
+                            <li><a id="login_link" href="login.html?type=login">登录</a></li>
+                            <li><a id="register_link" href="login.html?type=register">注册</a></li>
+                            <li>
+                                <a id="userId_link" class="btn" href="admin.html">
+                                    <span class="glyphicon glyphicon-user">ss</span>
+                                </a>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </nav>
+        </div>
+        <div class="body_box">
+            <ul id="myTab" class="nav nav-tabs">
+                <li class="active">
+                    <a href="#home" data-toggle="tab">
+                        个人信息
+                    </a>
+                </li>
+                <li><a onclick="getBooks()" href="#book" data-toggle="tab">图书管理</a></li>
+                <li><a onclick="getClients()" href="#client" data-toggle="tab">客户管理</a></li>
+            </ul>
+            <div id="myTabContent" class="tab-content">
+                <div class="tab-pane fade in active" id="home">
+                    <table>
+                        <tr>
+                            <td>ID：</td>
+                            <td><span id="user_id"></span></td>
+                        </tr>
+                        <tr>
+                            <td>昵称：</td>
+                            <td>
+                                <input id="user_name" type="text" ></td>
+                        </tr>
+                        <tr>
+                            <td>电话：</td>
+                            <td><input type="text" id="user_phone"></td>
+                        </tr>
+                        <tr>
+                            <td>地址：</td>
+                            <td><input type="text" id="user_address"></td>
+                        </tr>
+                        <tr>
+                            <td colspan="2">
+                                <input data-toggle="modal" data-target="#div_changePassword" type="button" value="修改密码">
+                            </td>
+                        </tr>
+                        <tr>
+                            <td colspan="2">
+                                <input onclick="updateUser()" type="button" value="保存">
+                            </td>
+                        </tr>
+                    </table>
+                    <div class="modal fade" id="div_changePassword" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+                        <div class="modal-dialog">
+                            <div class="modal-content">
+                                <div class="modal-header">
+                                    <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+                                    <h4 class="modal-title">修改密码</h4>
+                                </div>
+                                <div class="modal-body">
+                                    <table>
+                                        <tr>
+                                            <td>
+                                                旧密码：
+                                            </td>
+                                            <td>
+                                                <input id="txt_password_fir" type="text">
+                                            </td>
+                                            <td>
+                                                <span id="error_paswd">
+
+                                                </span>
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td>
+                                                新密码：
+                                            </td>
+                                            <td>
+                                                <input id="txt_password_new0" type="text">
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td>
+                                                确认密码：
+                                            </td>
+                                            <td>
+                                                <input id="txt_password_new1" type="text">
+                                            </td>
+                                        </tr>
+                                    </table>
+                                </div>
+                                <div class="modal-footer">
+                                    <button onclick="updatePaw()" type="button" class="btn btn-primary" data-dismiss="modal">提交更改</button>
+                                    <button type="button" class="btn btn-default" data-dismiss="modal">关闭</button>
+                                </div>
+                            </div><!-- /.modal-content -->
+                        </div><!-- /.modal -->
+                    </div>
+                </div>
+                <div class="tab-pane fade" id="book">
+                    <table>
+                        <tr>
+                            <th>
+                                <input id="book_id" type="text" value="id">
+                                <input id="btn_book_id" type="button" value="查询">
+                            </th>
+                            <th>
+                                <input id="add_book" data-toggle="modal" data-target="#addBooks_box" type="button" value="添加">
+                            </th>
+                        </tr>
+                    </table>
+                    <table>
+                        <thead>
+                            <tr>
+                                <th></th>
+                                <th>编号</th>
+                                <th>书名</th>
+                                <th>作者</th>
+                                <th>数量</th>
+                                <th>操作员id</th>
+                                <th>操作员昵称</th>
+                                <th>添加时间</th>
+                                <th></th>
+                            </tr>
+                        </thead>
+                        <tbody id="tab_book">
+
+                        </tbody>
+                        <tfoot>
+                            <tr>
+                                <td colspan="9">
+                                    <ul id="flip" class="pagination">
+
+                                    </ul>
+                                </td>
+                            </tr>
+                        </tfoot>
+                    </table>
+                    <div class="modal fade" id="addBooks_box" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+                        <div class="modal-dialog">
+                            <div class="modal-content">
+                                <div class="modal-header">
+                                    <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+                                    <h4 class="modal-title" id="myModalLabel">添加书籍</h4>
+                                </div>
+                                <div class="modal-body">
+                                    <table>
+                                        <tr>
+                                            <td>
+                                                编号：
+                                            </td>
+                                            <td>
+                                                系统自动生成
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td>
+                                                书名：
+                                            </td>
+                                            <td>
+                                                <input id="txt_book_name" maxlength="100" type="text">
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td>
+                                                作者：
+                                            </td>
+                                            <td>
+                                                <input id="txt_book_writer" maxlength="50" type="text">
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td>
+                                                数量：
+                                            </td>
+                                            <td>
+                                                <input id="txt_book_num" type="text" maxlength="8">
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td>
+                                                操作员ID：
+                                            </td>
+                                            <td>
+                                                <label id="lab_user_id"></label>
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td>
+                                                操作员昵称：
+                                            </td>
+                                            <td>
+                                                <label id="lab_user_name"></label>
+                                            </td>
+                                        </tr>
+                                    </table>
+                                </div>
+                                <div class="modal-footer">
+                                    <button onclick="addBooks()" type="button" class="btn btn-primary" data-dismiss="modal">添加</button>
+                                    <button type="button" class="btn btn-default" data-dismiss="modal">关闭</button>
+                                </div>
+                            </div><!-- /.modal-content -->
+                        </div><!-- /.modal -->
+                    </div>
+                </div>
+                <div class="tab-pane fade" id="client">
+                    <table>
+                        <tr>
+                            <td>
+                                <input id="txt_client_name" type="text" maxlength="100">
+                                <input id="btn_client_get" type="button" value="查询">
+
+                            </td>
+                            <td>
+                                <input id="btn_addClient"  data-toggle="modal" data-target="#addClient_box" type="button" value="添加">
+                            </td>
+                        </tr>
+                    </table>
+                    <table>
+                        <thead>
+                            <tr>
+                                <th></th>
+                                <th>编号</th>
+                                <th>昵称</th>
+                                <th>电话</th>
+                                <th>地址</th>
+                                <th></th>
+                            </tr>
+                        </thead>
+                        <tbody class="client_tbody">
+
+                        </tbody>
+                        <tfoot>
+                        <tr>
+                            <td colspan="7">
+                                <ul id="cli_f" class="pagination">
+
+                                </ul>
+                            </td>
+                        </tr>
+                        </tfoot>
+                    </table>
+                    <div class="modal fade" id="addClient_box" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+                        <div class="modal-dialog">
+                            <div class="modal-content">
+                                <div class="modal-header">
+                                    <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+                                    <h4 class="modal-title" id="d">添加客户</h4>
+                                </div>
+                                <div class="modal-body">
+                                    <table>
+                                        <tr>
+                                            <td>
+                                               编号：
+                                            </td>
+                                            <td>
+                                                系统生成
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td>
+                                                昵称：
+                                            </td>
+                                            <td>
+                                                <input id="txt_addclient_name" type="text" maxlength="20">
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td>
+                                                联系电话：
+                                            </td>
+                                            <td>
+                                                <input id="txt_addclient_phone" type="text" maxlength="11">
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td>
+                                                地址：
+                                            </td>
+                                            <td>
+                                                <textarea id="txt_addclient_address" maxlength="255" cols="22" rows="5"></textarea>
+                                            </td>
+                                        </tr>
+                                    </table>
+                                </div>
+                                <div class="modal-footer">
+                                    <button onclick="addClient()" type="button" class="btn btn-primary" data-dismiss="modal">提交更改</button>
+                                    <button type="button" class="btn btn-default" data-dismiss="modal">关闭</button>
+                                </div>
+                            </div><!-- /.modal-content -->
+                        </div><!-- /.modal -->
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+</html>

@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"    
+        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"   
+        xmlns:p="http://www.springframework.org/schema/p"  
+        xmlns:aop="http://www.springframework.org/schema/aop"   
+        xmlns:context="http://www.springframework.org/schema/context"  
+        xmlns:jee="http://www.springframework.org/schema/jee"  
+        xmlns:tx="http://www.springframework.org/schema/tx"  
+        xsi:schemaLocation="    
+            http://www.springframework.org/schema/aop http://www.springframework.org/schema/aop/spring-aop.xsd  
+            http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd  
+            http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context.xsd
+            http://www.springframework.org/schema/jee http://www.springframework.org/schema/jee/spring-jee.xsd  
+            http://www.springframework.org/schema/tx http://www.springframework.org/schema/tx/spring-tx.xsd">
+            
+     <!-- 添加sessionFactory bane ，注意，该类是Spring提供的 -->
+    <bean id="sessionFactory" class="org.springframework.orm.hibernate5.LocalSessionFactoryBean" scope="prototype">
+        <!-- 注入Hibernate 配置文件路径,前面要加上  classpath:-->
+        <property name="configLocation" value="classpath:hibernate.cfg.xml"/>
+    </bean>
+    
+    <!-- action关联 -->
+    <bean class="web.action.LoginAction" id="loginAction" scope="prototype">
+        <property name="loginService" ref="loginService"></property>
+    </bean>
+    <bean class="web.action.BorwTabAction" id="borwTabAction">
+        <property name="borwTabService" ref="borwTabService"></property>
+    </bean>
+    <bean class="web.action.AdminAction" id="adminAction">
+        <property name="loginService" ref="loginService"></property>
+        <property name="booksService" ref="booksService"></property>
+        <property name="clientsService" ref="clientsService"></property>
+    </bean>
+
+    <!-- service关联 -->
+    <bean class="web.service.impl.LoginServiceImpl" id="loginService">
+        <property name="usersDao" ref="usersDao"></property>
+        <property name="borwTabDao" ref="borwTabDao"></property>
+        <property name="booksDao" ref="booksDao"></property>
+    </bean>
+    <bean class="web.service.impl.ClientsServiceImpl" id="clientsService">
+        <property name="clientsDao" ref="clientsDao"></property>
+        <property name="borwTabDao" ref="borwTabDao"></property>
+    </bean>
+    <bean class="web.service.impl.BooksServiceImpl" id="booksService">
+        <property name="booksDao" ref="booksDao"></property>
+    </bean>
+    <bean class="web.service.impl.BorwTabServiceImpl" id="borwTabService">
+        <property name="booksDao" ref="booksDao">
+
+        </property>
+        <property name="borwTabDao" ref="borwTabDao"></property>
+    </bean>
+
+    <!-- dao关联 -->
+    <bean class="web.dao.impl.UsersDaoImpl" id="usersDao" scope="prototype">
+        <property name="sessionFactory" ref="sessionFactory"></property>
+    </bean>
+    <bean class="web.dao.impl.ClientsDaoImpl" id="clientsDao" scope="prototype">
+        <property name="sessionFactory" ref="sessionFactory"></property>
+    </bean>
+    <bean class="web.dao.impl.BooksDaoImpl" id="booksDao" scope="prototype">
+        <property name="sessionFactory" ref="sessionFactory"></property>
+    </bean>
+    <bean class="web.dao.impl.BorwTabDaoImpl" id="borwTabDao" scope="prototype">
+        <property name="sessionFactory" ref="sessionFactory"></property>
+    </bean>
+</beans>

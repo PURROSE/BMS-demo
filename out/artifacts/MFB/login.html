@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>登录</title>
+
+    <link rel="stylesheet" type="text/css" href="static/css/static/bootstrap.min.css">
+    <link rel="stylesheet" href="static/css/login.css">
+
+    <script type="text/javascript" src="static/js/jq/jquery-3.4.1.min.js"></script>
+    <script type="text/javascript" src="static/js/bootstrap/bootstrap.min.js"></script>
+    <script type="text/javascript" src="static/js/login.js"></script>
+    <script type="text/javascript" src="static/js/static.js"></script>
+</head>
+<body>
+<div class="big_div">
+    <div class="login_box">
+        <form class="login-form form-horizontal login_type">
+            <span>登录</span>
+            <div class="input-group login_type">
+                <span class="input-group-addon">帐号：</span>
+                <input class="form-control" id="login_user_id" name="usersId" type="text">
+            </div>
+            <div class="input-group login_type">
+                <span class="input-group-addon">密码：</span>
+                <input class="form-control" id="login_user_password" name="usersPassword" type="password">
+            </div>
+            <div class="login_type">
+                <label class="errorMessage" id="login_errorMessage" style="color: red">*账号或密码错误*</label>
+                <input class="btn btn-primary btn_sub" id="login_submit" type="button" value="登录">
+                <input id="change_reg" class="btn-link" type="button" onclick="changeBox('register')" value="注册">
+            </div>
+        </form>
+    </div>
+    <div class="reg_box">
+        <form class="reg-form login_type">
+            <span>注册</span>
+            <table class="login_type">
+                <tr>
+                    <td>昵&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp称：</td>
+                    <td>
+                        <input class="input-txt-style" id="reg_name" type="text">
+                    </td>
+                    <td>
+                        <label class="errorMessage" id="reg_name_error"></label>
+                    </td>
+                </tr>
+                <tr>
+                    <td>密&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp码：</td>
+                    <td>
+                        <input  class="input-txt-style" id="reg_password0" type="password">
+                    </td>
+                    <td>
+                        <label class="errorMessage" id="reg_password0_error"></label>
+                    </td>
+                </tr>
+                <tr>
+                    <td>确认密码：</td>
+                    <td>
+                        <input  class="input-txt-style" id="reg_password1" type="password">
+                    </td>
+                    <td>
+                        <label class="errorMessage" id="reg_password1_error"></label>
+                    </td>
+                </tr>
+                <tr>
+                    <td>联系电话：</td>
+                    <td>
+                        <input  class="input-txt-style" id="reg_phone" type="text">
+                    </td>
+                    <td>
+                        <label class="errorMessage" id="reg_phone_error"></label>
+                    </td>
+                </tr>
+                <tr>
+                    <td>地&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp址：</td>
+                    <td>
+                        <input class="input-txt-style" id="reg_address" type="text">
+                    </td>
+                    <td>
+                        <label class="errorMessage" id="reg_address_error"></label>
+                    </td>
+                </tr>
+                <tr>
+                    <td colspan="2">
+                        <input class="btn btn-primary btn_sub" id="reg_submit" type="button" value="注册">
+                    </td>
+                </tr>
+                <tr>
+                    <td colspan="2">
+                        <a id="change_login" onclick="changeBox('login')">已有账号，登录</a>
+                    </td>
+                </tr>
+            </table>
+        </form>
+    </div>
+    <div class="ret_userId">
+        <div class="login_type">
+            您的账号是：
+            <label id="ret_id">123</label></br>
+            <a onclick="changeBox('login')">登录</a>
+        </div>
+
+    </div>
+</div>
+</body>
+</html>

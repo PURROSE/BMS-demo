@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>图书管理系统</title>
+
+    <link rel="stylesheet" type="text/css" href="static/css/static/bootstrap.min.css">
+    <link rel="stylesheet" href="static/css/borwTab.css">
+
+    <script type="text/javascript" src="static/js/jq/jquery-3.4.1.min.js"></script>
+    <script src="static/js/bootstrap/bootstrap.min.js"></script>
+    <script src="static/js/borwTab.js"></script>
+    <script type="text/javascript" src="static/js/static.js"></script>
+</head>
+<body>
+    <div class="box_big">
+        <div class="nav_box">
+            <nav class="navbar navbar-default" role="navigation">
+                <div class="container-fluid">
+                    <div class="navbar-header">
+                        <a class="navbar-brand" href="index.html">图书管理系统</a>
+                    </div>
+                    <div>
+                        <ul class="nav navbar-nav">
+                            <li><a href="BorwTab.html">借阅管理</a></li>
+                            <li><a href="admin.html">系统管理</a></li>
+                        </ul>
+                    </div>
+                    <div class="user_box" style="float: right">
+                        <ul class="nav navbar-nav">
+                            <li><a id="login_link" href="login.html?type=login">登录</a></li>
+                            <li><a id="register_link" href="login.html?type=register">注册</a></li>
+                            <li>
+                                <a id="userId_link" class="btn" href="admin.html">
+                                    <span class="glyphicon glyphicon-user">ss</span>
+                                </a>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </nav>
+        </div>
+        <div class="box_borw">
+            <div class="sele_client">
+                <input id="sel_client_id" type="text">
+                <input id="btn_client_id" type="button" value="搜索">
+                <label>客户昵称：</label>
+                <label id="c_name">客户昵称</label>
+            </div>
+            <div class="box_tab">
+                <table id="tab_borwTab" class="tab_borwTab">
+                    <thead>
+                        <tr>
+                            <th></th>                             
+                            <th class="th_tab">
+                                编号
+                            </th>
+                            <th class="th_tab">
+                                客户ID
+                            </th>
+                            <th class="th_tab">
+                                客户昵称
+                            </th>
+                            <th class="th_tab">
+                                书籍编号
+                            </th>
+                            <th class="th_tab">
+                                书名
+                            </th>
+                            <th class="th_tab">
+                                操作员编号
+                            </th>
+                            <th class="th_tab">
+                                操作员昵称
+                            </th>
+                            <th class="th_tab">
+                                借书时间
+                            </th>
+                            <th>
+
+                            </th>
+                        </tr>
+                    </thead>
+                    <tbody id="table_body">
+
+                    </tbody>
+                    <tfoot>
+                        <tr>
+                            <td colspan="10">
+                                <input onclick="addTabRow()" id="btn_add_tab" type="button" value="添加">
+                            </td>
+                        </tr>
+                    </tfoot>
+                </table>
+            </div>
+        </div>
+    </div>
+</body>
+</html>

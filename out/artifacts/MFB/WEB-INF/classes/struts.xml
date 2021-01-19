@@ -1,0 +1,100 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE struts PUBLIC 
+    "-//Apache Software Foundation//DTD Struts Configuration 2.5//EN"
+    "http://struts.apache.org/dtds/struts-2.5.dtd">
+
+<!-- 上面的头，注意版本，从样例里复制过来 showcase.war\WEB-INF\src\java\struts.xml -->
+<struts>
+    <!-- 告知Struts2运行时使用Spring来创建对象 -->
+    <constant name="struts.objectFactory" value="spring" />
+    <constant name="struts.devMode" value="true"></constant>
+    <constant name="struts.action.excludePattern" value="/static/.*?" />
+
+    <package name="json" namespace="/" extends="json-default">
+
+        <action name="userLogin" class="loginAction" method="loginUsers">
+            <result name="success" type="json">
+                <param name="root">returnData</param>
+            </result>
+        </action>
+        <action name="updateUser" class="loginAction" method="updateUser">
+            <result name="success" type="json">
+                <param name="root">returnData</param>
+            </result>
+        </action>
+        <action name="register" class="loginAction" method="register">
+            <result type="json">
+                <param name="root">returnData</param>
+            </result>
+        </action>
+        <action name="isLogin" class="loginAction" method="isLogin">
+            <result type="json">
+                <param name="root">returnData</param>
+            </result>
+        </action>
+
+        <action name="getClient" class="adminAction" method="getClient">
+            <result type="json">
+                <param name="root">returnData</param>
+            </result>
+        </action>
+        <action name="getBorwTab" class="borwTabAction" method="getBorwTab">
+            <result type="json">
+                <param name="root">returnData</param>
+            </result>
+        </action>
+        <action name="getBooks" class="adminAction" method="getBook">
+            <result type="json">
+                <param name="root">returnData</param>
+            </result>
+        </action>
+
+        <action name="addBorTab" class="borwTabAction" method="addBorTab">
+            <result type="json">
+                <param name="root">returnData</param>
+            </result>
+        </action>
+        <action name="updateBorTab" class="borwTabAction" method="updateBorTab">
+            <result type="json">
+                <param name="root">returnData</param>
+            </result>
+        </action>
+        <action name="deleteBorTab" class="borwTabAction" method="deleteBorTab">
+            <result type="json">
+                <param name="root">returnData</param>
+            </result>
+        </action>
+
+        <action name="addBooks" class="adminAction" method="addBooks">
+            <result type="json">
+                <param name="root">returnData</param>
+            </result>
+        </action>
+        <action name="updateBooks" class="adminAction" method="updateBooks">
+            <result type="json">
+                <param name="root">returnData</param>
+            </result>
+        </action>
+        <action name="deleteBooks" class="adminAction" method="deleteBooks">
+            <result type="json">
+                <param name="root">returnData</param>
+            </result>
+        </action>
+
+        <action name="addClients" class="adminAction" method="addClients">
+            <result type="json">
+                <param name="root">returnData</param>
+            </result>
+        </action>
+        <action name="updateClients" class="adminAction" method="updateClient">
+            <result type="json">
+                <param name="root">returnData</param>
+            </result>
+        </action>
+        <action name="deleteClients" class="adminAction" method="deleteClient">
+            <result type="json">
+                <param name="root">returnData</param>
+            </result>
+        </action>
+    </package>
+</struts>

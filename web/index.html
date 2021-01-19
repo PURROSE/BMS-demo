@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>图书管理系统</title>
+
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@3.3.7/dist/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+    <link rel="stylesheet" href="static/css/index.css">
+
+    <script type="text/javascript" src="static/js/jq/jquery-3.4.1.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@3.3.7/dist/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
+    <script src="static/js/index.js"></script>
+    <script type="text/javascript" src="static/js/static.js"></script>
+
+    <style type="text/css">
+        .div_bigbox{
+            width: 1024px;
+            margin: 0 auto;
+        }
+    </style>
+</head>
+<body>
+    <div class="div_bigbox">
+        <div class="nav_box">
+            <nav class="navbar navbar-default" role="navigation">
+                <div class="container-fluid">
+                    <div class="navbar-header">
+                        <a class="navbar-brand" href="index.html">图书管理系统</a>
+                    </div>
+                    <div>
+                        <ul class="nav navbar-nav">
+                            <li><a href="BorwTab.html">借阅管理</a></li>
+                            <li><a href="admin.html">系统管理</a></li>
+                        </ul>
+                    </div>
+                    <div class="user_box" style="float: right">
+                        <ul class="nav navbar-nav">
+                            <li><a id="login_link" href="login.html?type=login">登录</a></li>
+                            <li><a id="register_link" href="login.html?type=register">注册</a></li>
+                            <li>
+                                <a id="userId_link" class="btn" href="admin.html">
+                                    <span class="glyphicon glyphicon-user">ss</span>
+                                </a>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </nav>
+        </div>
+        <div>
+
+        </div>
+    </div>
+</body>
+</html>
